@@ -1,0 +1,16 @@
+{
+  "name": "omo-langsmith",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "pi": {
+    "extensions": ["./langsmith.ts"]
+  },
+  "dependencies": {
+    "langsmith": "^0.11.3"
+  },
+  "devDependencies": {
+    "@code-yeongyu/senpi": "2026.10.25-2",
+    "typescript": "^5.9.0"
+  }
+}
