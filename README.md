@@ -73,7 +73,7 @@ senpi 文档里的目录是 `~/.senpi/agent`。OmO 用的是 `~/.omo/agent`。�
 | `LANGSMITH_AGENT_ENVIRONMENT` | 同上 | 无 | 与 `LANGSMITH_AGENT_ID` 一起设置 |
 | `LANGSMITH_WORKSPACE_ID` | 仅当一把密钥跨多个 workspace | 无 | 由 `new Client()` 读取，用来选定 workspace |
 
-`LANGSMITH_AGENT_ID` 与 `LANGSMITH_AGENT_ENVIRONMENT` 必须成对出现，并且与 `LANGSMITH_PROJECT` 互斥。这是本扩展头部注释写下的约定，由 LangSmith 客户端执行，本文件里没有再做一次校验。
+`LANGSMITH_AGENT_ID` 与 `LANGSMITH_AGENT_ENVIRONMENT` 必须成对出现，并且与 `LANGSMITH_PROJECT` 互斥。这是本扩展头部注释写下的约定，本文件里没有再做一次校验。依赖的 `langsmith` 客户端会执行它：项目（`LANGSMITH_PROJECT`，或遗留的 `LANGCHAIN_PROJECT` / `LANGCHAIN_SESSION`）和 agent 地址同时存在时，这次寻址被拒绝，这些 run 不会被追踪。只设置了其中一个 agent 变量也一样。`LANGSMITH_AGENT_ENVIRONMENT` 只能是 `local`、`development`、`staging` 或 `production`。
 
 ## 可选开关
 
@@ -182,7 +182,7 @@ Senpi's own docs refer to `~/.senpi/agent`. OmO uses `~/.omo/agent`. Install und
 | `LANGSMITH_AGENT_ENVIRONMENT` | same | none | set together with `LANGSMITH_AGENT_ID` |
 | `LANGSMITH_WORKSPACE_ID` | only when one key spans multiple workspaces | none | read by `new Client()` to pick the workspace |
 
-`LANGSMITH_AGENT_ID` and `LANGSMITH_AGENT_ENVIRONMENT` are a pair, and that pair is mutually exclusive with `LANGSMITH_PROJECT`. That is the contract written in this extension's header. The LangSmith client enforces it; this file does not check it again.
+`LANGSMITH_AGENT_ID` and `LANGSMITH_AGENT_ENVIRONMENT` are a pair, and that pair is mutually exclusive with `LANGSMITH_PROJECT`. That is the contract written in this extension's header; this file does not check it again. The `langsmith` client this package depends on does: if a project (`LANGSMITH_PROJECT`, or the legacy `LANGCHAIN_PROJECT` / `LANGCHAIN_SESSION`) and an agent address are both set, that destination is rejected and those runs are not traced. Setting only one of the two agent variables does the same. `LANGSMITH_AGENT_ENVIRONMENT` must be `local`, `development`, `staging`, or `production`.
 
 ## Optional switches
 
